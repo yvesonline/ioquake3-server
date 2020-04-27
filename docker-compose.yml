@@ -2,7 +2,7 @@ version: "2"
 
 services:
   ioquake3:
-    build: .
+    build: ioquake3
     ports:
       - 27950:27950
       - 27952:27952
