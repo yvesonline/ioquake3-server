@@ -1,25 +1,21 @@
 provider "google" {
-  credentials = file("ioquake.json")
-  project = "weissig-core"
-  region  = "europe-west3"
-  zone    = "europe-west3-a"
+  credentials = file("ioquake3.json")
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 
-variable "docker_declaration" {
-  type = string
-  default = "spec:\n  containers:\n    - name: ioquake3-ded\n      image: 'gcr.io/weissig-core/ioquake3-ded:1.0.1'\n      stdin: false\n      tty: false\n  restartPolicy: Always\n"
-}
-
-variable "boot_image_name" {
-  type = string
-  default = "projects/cos-cloud/global/images/cos-stable-81-12871-96-0"
-}
-
+# ----------
+# IP address
+# ----------
 resource "google_compute_address" "ioquake3_ip" {
   name         = "ioquake3-ip"
   address_type = "EXTERNAL"
 }
 
+# -------------
+# Firewall rule
+# -------------
 resource "google_compute_firewall" "allow_ioquake3" {
   name    = "allow-ioquake3"
   network = "default"
@@ -36,9 +32,12 @@ resource "google_compute_firewall" "allow_ioquake3" {
   }
 }
 
+# ----------------
+# Compute instance
+# ----------------
 resource "google_compute_instance" "ioquake3" {
   name         = "ioquake3"
-  machine_type = "f1-micro"
+  machine_type = var.machine_type
   tags         = ["ioquake3-server"]
 
   boot_disk {
@@ -68,8 +67,4 @@ resource "google_compute_instance" "ioquake3" {
       nat_ip = google_compute_address.ioquake3_ip.address
     }
   }
-}
-
-output "ioquake3_ip" {
-  value = google_compute_instance.ioquake3.network_interface[0].access_config[0].nat_ip
 }

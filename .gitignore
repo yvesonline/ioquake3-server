@@ -3,4 +3,4 @@ terraform.tfplan
 terraform.tfstate
 terraform.tfstate.backup
 .terraform
-ioquake.json
+ioquake3.json
