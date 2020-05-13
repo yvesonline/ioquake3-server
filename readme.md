@@ -20,6 +20,8 @@ docker push gcr.io/<your GCP project>/ioquake3-ded:<tag>
 
 - A Google **service account** and its credentials placed in a file called `ioquake3.json` in the root folder.
 
+(_Note_: Add the following permissions: `Compute Admin`, `Service Account User`, `Storage Object Viewer`.)
+
 ## Usage with Terraform (Recommended)
 
 - Adapt `variables.auto.tfvars` to your needs, don't forget to change `docker_declaration`
