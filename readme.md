@@ -22,12 +22,13 @@ docker push gcr.io/<your GCP project>/ioquake3-ded:<tag>
 
 ## Usage with Terraform (Recommended)
 
+- Adapt `variables.auto.tfvars` to your needs, don't forget to change `docker_declaration`
 - `terraform init` to get the plugins
 - `terraform plan` to see the infrastructure plan
 - `terraform apply` to apply the infrastructure build
 - `terraform destroy` to destroy the built infrastructure
 
-## Usage with `gcloud`
+## Usage with `gcloud` command
 
 - Reserve IP address
 ```
