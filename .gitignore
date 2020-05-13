@@ -1,1 +1,4 @@
 baseq3
+terraform.tfplan
+terraform.tfstate
+.terraform
