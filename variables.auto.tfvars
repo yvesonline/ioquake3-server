@@ -1,6 +1,6 @@
 project            = "<your GCP project>"
 region             = "<your desired GCP region>"
 zone               = "<your desired GCP zone>"
-docker_declaration = "spec:\n  containers:\n    - name: ioquake3-ded\n      image: 'gcr.io/weissig-core/ioquake3-ded:1.0.1'\n      stdin: false\n      tty: false\n  restartPolicy: Always\n"
+docker_declaration = "spec:\n  containers:\n    - name: ioquake3-ded\n      image: 'gcr.io/<your GCP project>/ioquake3-ded:<tag>'\n      stdin: false\n      tty: false\n  restartPolicy: Always\n"
 boot_image_name    = "projects/cos-cloud/global/images/cos-stable-81-12871-96-0"
 machine_type       = "f1-micro"
