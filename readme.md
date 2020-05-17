@@ -72,3 +72,17 @@ gcloud compute addresses delete ioquake3-ip --project <your GCP project> --regio
 ```
 gcloud compute instances delete ioquake3 --project <your GCP project> --zone <your GCP zone>
 ```
+
+## Administration
+
+- To connect to the console of your dedicated [ioquake3](https://ioquake3.org/) server type the following in your local console:
+```
+/set rconaddress <ip address>:<port>
+/set rconpassword <your server console password>
+```
+(Note: See `seta rconPassword ...` in `server.cfg` for your server console password.)
+
+- `levels.cfg` comes with an opinionated rotation of levels, to change in game do:
+```
+/rcon map <map>
+```
